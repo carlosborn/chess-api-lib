@@ -20,33 +20,33 @@ public interface Request {
 
     Optional<TypeRequest> getTypeRequest();
 
-    Request setQueryParameter(String key, String value);
+    Request addQueryParameter(String key, String value);
 
-    Request setQueryParameter(String key, double value);
+    Request addQueryParameter(String key, double value);
 
-    Request setQueryParameter(String key, int value);
+    Request addQueryParameter(String key, int value);
 
-    Request setQueryParameter(String key, boolean value);
+    Request addQueryParameter(String key, boolean value);
 
-    Request setQueryParameter(String key, long value);
+    Request addQueryParameter(String key, long value);
 
-    Request setQueryParameter(String key, char value);
+    Request addQueryParameter(String key, char value);
 
-    Request setQueryParameter(String key, LocalDateTime value);
+    Request addQueryParameter(String key, LocalDateTime value);
 
-    Request setPathParameter(String key, String value);
+    Request addPathParameter(String key, String value);
 
-    Request setPathParameter(String key, double value);
+    Request addPathParameter(String key, double value);
 
-    Request setPathParameter(String key, int value);
+    Request addPathParameter(String key, int value);
 
-    Request setPathParameter(String key, boolean value);
+    Request addPathParameter(String key, boolean value);
 
-    Request setPathParameter(String key, long value);
+    Request addPathParameter(String key, long value);
 
-    Request setPathParameter(String key, char value);
+    Request addPathParameter(String key, char value);
 
-    Request setPathParameter(String key, LocalDateTime value);
+    Request addPathParameter(String key, LocalDateTime value);
 
     abstract Optional<String> toJSON();
 

@@ -6,10 +6,11 @@ import org.ceborn.http.TypeRequest;
 import java.util.Map;
 import java.util.Optional;
 
-public class TitlesPlayersRequest extends AbstractRequest {
+public class DataStatsPlayerRequest extends AbstractRequest {
 
-    public TitlesPlayersRequest(TitlesAbbreviations title) {
-        this.addPathParameter("titled", title.name());
+    public DataStatsPlayerRequest(String player) {
+        this.addPathParameter("player", player);
+        this.addPathParameter("stats", "");
         this.setTypeRequest(TypeRequest.GET);
     }
 
@@ -30,13 +31,11 @@ public class TitlesPlayersRequest extends AbstractRequest {
 
     @Override
     public Response getResponse(String response, int httpCode, Map<String, String> headers, String errorMessage) {
-        return TitlesPlayersResponse.newBuilder()
+        return DataStatsPlayerResponse.newBuilder()
                 .setBody(response)
                 .setHTTPCode(httpCode)
                 .setHeaders(headers)
                 .setErrorMessage(errorMessage)
-                .setTypeRequest(this.getTypeRequest().isPresent() ? this.getTypeRequest().get() : null)
                 .build();
     }
-
 }

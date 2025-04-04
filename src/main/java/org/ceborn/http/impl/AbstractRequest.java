@@ -11,7 +11,7 @@ public abstract class AbstractRequest implements Request {
     private Map<String, String> headers = new HashMap<>();
     private TypeRequest typeRequest;
     private final Map<String, Object> queryParameters = new HashMap<>();
-    private final Map<String, Object> pathParameters = new HashMap<>();
+    private final Map<String, Object> pathParameters = new LinkedHashMap<>();
 
     public AbstractRequest() {
         this.initHeaders();
@@ -61,85 +61,85 @@ public abstract class AbstractRequest implements Request {
     }
 
     @Override
-    public Request setQueryParameter(String key, String value) {
+    public Request addQueryParameter(String key, String value) {
         this.queryParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setQueryParameter(String key, double value) {
+    public Request addQueryParameter(String key, double value) {
         this.queryParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setQueryParameter(String key, int value) {
+    public Request addQueryParameter(String key, int value) {
         this.queryParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setQueryParameter(String key, boolean value) {
+    public Request addQueryParameter(String key, boolean value) {
         this.queryParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setQueryParameter(String key, long value) {
+    public Request addQueryParameter(String key, long value) {
         this.queryParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setQueryParameter(String key, char value) {
+    public Request addQueryParameter(String key, char value) {
         this.queryParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setQueryParameter(String key, LocalDateTime value) {
+    public Request addQueryParameter(String key, LocalDateTime value) {
         this.queryParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setPathParameter(String key, String value) {
+    public Request addPathParameter(String key, String value) {
         this.pathParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setPathParameter(String key, double value) {
+    public Request addPathParameter(String key, double value) {
         this.pathParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setPathParameter(String key, int value) {
+    public Request addPathParameter(String key, int value) {
         this.pathParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setPathParameter(String key, boolean value) {
+    public Request addPathParameter(String key, boolean value) {
         this.pathParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setPathParameter(String key, long value) {
+    public Request addPathParameter(String key, long value) {
         this.pathParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setPathParameter(String key, char value) {
+    public Request addPathParameter(String key, char value) {
         this.pathParameters.put(key, value);
         return this;
     }
 
     @Override
-    public Request setPathParameter(String key, LocalDateTime value) {
+    public Request addPathParameter(String key, LocalDateTime value) {
         this.pathParameters.put(key, value);
         return this;
     }

@@ -9,7 +9,7 @@ import java.util.Optional;
 public class DataPlayerRequest extends AbstractRequest {
 
     public DataPlayerRequest(String player) {
-        this.setPathParameter("player", player);
+        this.addPathParameter("player", player);
         this.setTypeRequest(TypeRequest.GET);
     }
 
