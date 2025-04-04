@@ -7,25 +7,62 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
-@Getter
 public class DataPlayerResponse extends AbstractResponse {
 
+    @Getter
     private Long playerId;
-    private Optional<String> title;
+    @Getter
     private String id;
+    @Getter
     private String url;
+    @Getter
     private String username;
+    @Getter
     private int followers;
+    @Getter
     private String country;
+    @Getter
     private Date lastOnline;
+    @Getter
     private Date joined;
+    @Getter
     private PlayerStatus status;
-    private Optional<String> name;
-    private Optional<String> avatar;
-    private Optional<String> location;
+
+    private String title;
+    private String name;
+    private String avatar;
+    private String location;
     private boolean isStreamer;
-    private Optional<String> twitchUrl;
-    private Optional<Integer> fideRating;
+    private String twitchUrl;
+    private Integer fideRating;
+
+    public Optional<String> getTitle() {
+        return this.title == null ? Optional.empty() : Optional.of(this.title);
+    }
+
+    public Optional<String> getName() {
+        return this.name == null ? Optional.empty() : Optional.of(this.name);
+    }
+
+    public Optional<String> getAvatar() {
+        return this.avatar == null ? Optional.empty() : Optional.of(this.avatar);
+    }
+
+    public Optional<String> getLocation() {
+        return this.location == null ? Optional.empty() : Optional.of(this.location);
+    }
+
+    public boolean isStreamer() {
+        return isStreamer;
+    }
+
+    public Optional<String> getTwitchUrl() {
+        return this.twitchUrl == null ? Optional.empty() : Optional.of(this.twitchUrl);
+    }
+
+    public Optional<Integer> getFideRating() {
+        return this.fideRating == null ? Optional.empty() : Optional.of(this.fideRating);
+    }
 
     private DataPlayerResponse() {
     }
@@ -36,21 +73,21 @@ public class DataPlayerResponse extends AbstractResponse {
 
     private void load() {
         this.playerId = this.getBody().getLong("player_id");
-        this.title = this.getBody().has("title") ? Optional.of(this.getBody().getString("title")) : Optional.empty();
+        this.title = this.getBody().has("title") ? this.getBody().getString("title") : null;
         this.id = this.getBody().getString("@id");
         this.url = this.getBody().getString("url");
         this.username = this.getBody().getString("username");
         this.status = PlayerStatus.getEnum(this.getBody().getString("status"));
-        this.title = this.getBody().has("title") ? Optional.of(this.getBody().getString("title")) : Optional.empty();
-        this.avatar = this.getBody().has("avatar") ? Optional.of(this.getBody().getString("avatar")) : Optional.empty();
-        this.location = this.getBody().has("location") ? Optional.of(this.getBody().getString("location")) : Optional.empty();
+        this.name = this.getBody().has("name") ? this.getBody().getString("name") : null;
+        this.avatar = this.getBody().has("avatar") ? this.getBody().getString("avatar") : null;
+        this.location = this.getBody().has("location") ? this.getBody().getString("location") : null;
         this.country = this.getBody().getString("country");
         this.joined = new Date(this.getBody().getLong("joined"));
         this.lastOnline = new Date(this.getBody().getLong("last_online"));
         this.followers = this.getBody().getInt("followers");
         this.isStreamer = this.getBody().getBoolean("is_streamer");
-        this.twitchUrl = this.getBody().has("twitch_url") ? Optional.of(this.getBody().getString("twitch_url")) : Optional.empty();
-        this.fideRating = this.getBody().has("fide") ? Optional.of(this.getBody().getInt("fide")) : Optional.empty();
+        this.twitchUrl = this.getBody().has("twitch_url") ? this.getBody().getString("twitch_url") : null;
+        this.fideRating = this.getBody().has("fide") ? this.getBody().getInt("fide") : null;
     }
 
     @Override
