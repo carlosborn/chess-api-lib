@@ -8,13 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public abstract class AbstractResponse implements Response {
+public abstract class AbstractResponse<T> implements Response {
 
     private JSONObject body;
     private int httpCode;
     private String errorMessage;
     private Map<String, String> headers = new HashMap<>();
     private TypeRequest typeRequest;
+
+    abstract T load();
 
     @Override
     public Response setTypeRequest(TypeRequest typeRequest) {

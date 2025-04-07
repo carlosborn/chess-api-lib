@@ -1,5 +1,6 @@
 package org.ceborn.http;
 
+import org.ceborn.http.impl.AbstractResponse;
 import org.json.JSONObject;
 
 import java.util.Map;

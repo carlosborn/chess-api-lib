@@ -1,13 +1,12 @@
 package org.ceborn.http.impl;
 
 import lombok.Getter;
-import org.ceborn.http.TypeRequest;
+import org.ceborn.builders.DataPlayerResponseBuilder;
 
 import java.util.Date;
-import java.util.Map;
 import java.util.Optional;
 
-public class DataPlayerResponse extends AbstractResponse {
+public class DataPlayerResponse extends AbstractResponse<DataPlayerResponse> {
 
     @Getter
     private Long playerId;
@@ -68,10 +67,10 @@ public class DataPlayerResponse extends AbstractResponse {
     }
 
     public static DataPlayerResponseBuilder newBuilder() {
-        return new DataPlayerResponseBuilder();
+        return new DataPlayerResponseBuilder(new DataPlayerResponse());
     }
 
-    private void load() {
+    public DataPlayerResponse load() {
         this.playerId = this.getBody().getLong("player_id");
         this.title = this.getBody().has("title") ? this.getBody().getString("title") : null;
         this.id = this.getBody().getString("@id");
@@ -88,51 +87,13 @@ public class DataPlayerResponse extends AbstractResponse {
         this.isStreamer = this.getBody().getBoolean("is_streamer");
         this.twitchUrl = this.getBody().has("twitch_url") ? this.getBody().getString("twitch_url") : null;
         this.fideRating = this.getBody().has("fide") ? this.getBody().getInt("fide") : null;
+        return this;
     }
 
     @Override
     public String toString() {
         return "Class Name:" + "[ " + this.getClass().getSimpleName() + " ]" + "\n" +
                 "Body: " + this.getBody().toString() + "\n";
-    }
-
-    public static class DataPlayerResponseBuilder {
-
-        DataPlayerResponse response;
-
-        private DataPlayerResponseBuilder() {
-            response = new DataPlayerResponse();
-        }
-
-        public DataPlayerResponseBuilder setBody(String body) {
-            this.response.setBody(body);
-            return this;
-        }
-
-        public DataPlayerResponseBuilder setHTTPCode(int httpCode) {
-            this.response.setHTTPCode(httpCode);
-            return this;
-        }
-
-        public DataPlayerResponseBuilder setHeaders(Map<String, String> headers) {
-            this.response.setHeaders(headers);
-            return this;
-        }
-
-        public DataPlayerResponseBuilder setErrorMessage(String errorMessage) {
-            this.response.setErrorMessage(errorMessage);
-            return this;
-        }
-
-        public DataPlayerResponseBuilder setTypeRequest(TypeRequest typeRequest) {
-            this.response.setTypeRequest(typeRequest);
-            return this;
-        }
-
-        public DataPlayerResponse build() {
-            this.response.load();
-            return this.response;
-        }
     }
 }
 

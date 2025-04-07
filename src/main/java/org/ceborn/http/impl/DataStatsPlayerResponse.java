@@ -1,12 +1,11 @@
 package org.ceborn.http.impl;
 
-import org.ceborn.http.TypeRequest;
+import org.ceborn.builders.DataStatsPlayerResponseBuilder;
 import org.ceborn.http.secondaries.*;
 
-import java.util.Map;
 import java.util.Optional;
 
-public class DataStatsPlayerResponse extends AbstractResponse {
+public class DataStatsPlayerResponse extends AbstractResponse<DataStatsPlayerResponse> {
 
     private ChessRapid chessRapid;
     private ChessDaily chessDaily;
@@ -19,8 +18,8 @@ public class DataStatsPlayerResponse extends AbstractResponse {
     private DataStatsPlayerResponse() {
     }
 
-    public static DataStatsPlayerResponse.DataStatsPlayerResponseBuilder newBuilder() {
-        return new DataStatsPlayerResponse.DataStatsPlayerResponseBuilder();
+    public static DataStatsPlayerResponseBuilder newBuilder() {
+        return new DataStatsPlayerResponseBuilder(new DataStatsPlayerResponse());
     }
 
     public Optional<ChessRapid> getChessRapid() {
@@ -51,7 +50,7 @@ public class DataStatsPlayerResponse extends AbstractResponse {
         return this.puzzleRush == null ? Optional.empty() : Optional.of(this.puzzleRush);
     }
 
-    private void load() {
+    public DataStatsPlayerResponse load() {
         if (this.getBody().has("chess_rapid")) {
             this.chessRapid = new ChessRapid(this.getBody().getJSONObject("chess_rapid"));
         }
@@ -79,45 +78,7 @@ public class DataStatsPlayerResponse extends AbstractResponse {
         if (this.getBody().has("puzzle_rush")) {
             this.puzzleRush = new PuzzleRushPlayerStats(this.getBody().getJSONObject("puzzle_rush"));
         }
+
+        return this;
     }
-
-    public static class DataStatsPlayerResponseBuilder {
-
-        DataStatsPlayerResponse response;
-
-        private DataStatsPlayerResponseBuilder() {
-            response = new DataStatsPlayerResponse();
-        }
-
-        public DataStatsPlayerResponse.DataStatsPlayerResponseBuilder setBody(String body) {
-            this.response.setBody(body);
-            return this;
-        }
-
-        public DataStatsPlayerResponse.DataStatsPlayerResponseBuilder setHTTPCode(int httpCode) {
-            this.response.setHTTPCode(httpCode);
-            return this;
-        }
-
-        public DataStatsPlayerResponse.DataStatsPlayerResponseBuilder setHeaders(Map<String, String> headers) {
-            this.response.setHeaders(headers);
-            return this;
-        }
-
-        public DataStatsPlayerResponse.DataStatsPlayerResponseBuilder setErrorMessage(String errorMessage) {
-            this.response.setErrorMessage(errorMessage);
-            return this;
-        }
-
-        public DataStatsPlayerResponse.DataStatsPlayerResponseBuilder setTypeRequest(TypeRequest typeRequest) {
-            this.response.setTypeRequest(typeRequest);
-            return this;
-        }
-
-        public DataStatsPlayerResponse build() {
-            this.response.load();
-            return this.response;
-        }
-    }
-
 }
