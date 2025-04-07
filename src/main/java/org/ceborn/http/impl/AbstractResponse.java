@@ -16,7 +16,7 @@ public abstract class AbstractResponse<T> implements Response {
     private Map<String, String> headers = new HashMap<>();
     private TypeRequest typeRequest;
 
-    abstract T load();
+    public abstract T load();
 
     @Override
     public Response setTypeRequest(TypeRequest typeRequest) {
