@@ -1,5 +1,6 @@
 package org.ceborn.http.impl;
 
+import lombok.Getter;
 import org.ceborn.http.Response;
 import org.ceborn.http.TypeRequest;
 import org.json.JSONObject;
@@ -9,6 +10,9 @@ import java.util.Map;
 import java.util.Optional;
 
 public abstract class AbstractResponse<T> implements Response {
+
+    @Getter
+    private String rawData;
 
     private JSONObject body;
     private int httpCode;
@@ -31,7 +35,12 @@ public abstract class AbstractResponse<T> implements Response {
 
     @Override
     public Response setBody(String response) {
-        this.body = new JSONObject(response);
+        this.rawData = response;
+        try {
+            this.body = new JSONObject(response);
+        } catch (Exception e) {
+            this.body = null;
+        }
         return this;
     }
 
