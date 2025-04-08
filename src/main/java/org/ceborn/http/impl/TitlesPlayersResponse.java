@@ -21,6 +21,10 @@ public class TitlesPlayersResponse extends AbstractResponse<TitlesPlayersRespons
     }
 
     public TitlesPlayersResponse load() {
+        if (this.getErrorMessage().isPresent()) {
+            return this;
+        }
+
         for (Object o : this.getBody().getJSONArray("players").toList()) {
             players.add((String) o);
         }

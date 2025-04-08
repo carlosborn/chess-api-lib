@@ -22,6 +22,10 @@ public class DailyChessToMoveResponse extends AbstractResponse<DailyChessToMoveR
 
     @Override
     public DailyChessToMoveResponse load() {
+        if (this.getErrorMessage().isPresent()) {
+            return this;
+        }
+
         if (this.getBody().has("games")) {
             for (int i = 0; i < this.getBody().getJSONArray("games").length(); i++) {
                 JSONObject json = this.getBody().getJSONArray("games").getJSONObject(i);

@@ -1,10 +1,12 @@
 package org.ceborn.builders;
 
+import lombok.Getter;
 import org.ceborn.http.Response;
 import org.ceborn.http.TypeRequest;
 
 import java.util.Map;
 
+@Getter
 public abstract class AbstractBuilder<T extends Response> implements Builder {
 
     private final T response;
@@ -38,10 +40,6 @@ public abstract class AbstractBuilder<T extends Response> implements Builder {
     public AbstractBuilder<T> setTypeRequest(TypeRequest typeRequest) {
         this.response.setTypeRequest(typeRequest);
         return this;
-    }
-
-    public T getResponse() {
-        return this.response;
     }
 
 }

@@ -71,6 +71,10 @@ public class DataPlayerResponse extends AbstractResponse<DataPlayerResponse> {
     }
 
     public DataPlayerResponse load() {
+        if (this.getErrorMessage().isPresent()) {
+            return this;
+        }
+
         this.playerId = this.getBody().getLong("player_id");
         this.title = this.getBody().has("title") ? this.getBody().getString("title") : null;
         this.id = this.getBody().getString("@id");

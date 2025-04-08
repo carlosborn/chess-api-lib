@@ -77,7 +77,7 @@ public abstract class AbstractResponse<T> implements Response {
 
     @Override
     public Optional<String> getErrorMessage() {
-        return Optional.of(this.errorMessage);
+        return Optional.ofNullable(this.errorMessage);
     }
 
     @Override

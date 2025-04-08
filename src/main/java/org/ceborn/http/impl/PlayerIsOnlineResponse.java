@@ -20,6 +20,10 @@ public class PlayerIsOnlineResponse extends AbstractResponse<PlayerIsOnlineRespo
 
     @Override
     public PlayerIsOnlineResponse load() {
+        if (this.getErrorMessage().isPresent()) {
+            return this;
+        }
+
         this.online = this.getBody().getBoolean("online");
         return this;
     }

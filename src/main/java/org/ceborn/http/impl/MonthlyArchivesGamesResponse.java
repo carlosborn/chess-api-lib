@@ -20,6 +20,10 @@ public class MonthlyArchivesGamesResponse extends AbstractResponse<MonthlyArchiv
 
     @Override
     public MonthlyArchivesGamesResponse load() {
+        if (this.getErrorMessage().isPresent()) {
+            return this;
+        }
+
         if (this.getBody().has("archives")) {
             for (int i = 0; i < this.getBody().getJSONArray("archives").length(); i++) {
                 this.archives.add(this.getBody().getJSONArray("archives").getString(i));

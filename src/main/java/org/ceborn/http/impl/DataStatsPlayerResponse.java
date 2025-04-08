@@ -51,6 +51,10 @@ public class DataStatsPlayerResponse extends AbstractResponse<DataStatsPlayerRes
     }
 
     public DataStatsPlayerResponse load() {
+        if (this.getErrorMessage().isPresent()) {
+            return this;
+        }
+
         if (this.getBody().has("chess_rapid")) {
             this.chessRapid = new ChessRapid(this.getBody().getJSONObject("chess_rapid"));
         }
