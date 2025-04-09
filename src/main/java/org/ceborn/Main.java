@@ -7,7 +7,7 @@ import org.ceborn.http.impl.*;
 
 public class Main {
     public static void main(String[] args) {
-        Request request = new TeamMatchesRequest("erik");
+        Request request = new TournamentsPlayerRequest("erik");
         Response response = HTTPSender.sendHTTPRequest(request);
         System.out.println(response.getBody());
     }
