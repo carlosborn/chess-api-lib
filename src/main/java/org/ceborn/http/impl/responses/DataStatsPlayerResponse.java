@@ -1,4 +1,4 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.responses;
 
 import org.ceborn.builders.DataStatsPlayerResponseBuilder;
 import org.ceborn.http.secondaries.*;

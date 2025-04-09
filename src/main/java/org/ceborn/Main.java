@@ -3,7 +3,7 @@ package org.ceborn;
 import org.ceborn.http.Request;
 import org.ceborn.http.Response;
 import org.ceborn.http.communications.HTTPSender;
-import org.ceborn.http.impl.*;
+import org.ceborn.http.impl.requests.TournamentsPlayerRequest;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package org.ceborn.builders;
 
-import org.ceborn.http.impl.PGNFileResponse;
+import org.ceborn.http.impl.responses.PGNFileResponse;
 
 public class PGNFileRequestBuilder extends AbstractBuilder<PGNFileResponse> {
 

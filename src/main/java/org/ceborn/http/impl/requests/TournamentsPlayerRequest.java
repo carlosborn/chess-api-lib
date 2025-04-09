@@ -1,16 +1,17 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.requests;
 
 import org.ceborn.http.Response;
 import org.ceborn.http.TypeRequest;
+import org.ceborn.http.impl.responses.TournamentsPlayerResponse;
 
 import java.util.Map;
 import java.util.Optional;
 
-public class DailyChessToMoveRequest extends AbstractRequest {
+public class TournamentsPlayerRequest extends AbstractRequest {
 
-    public DailyChessToMoveRequest(String player) {
+    public TournamentsPlayerRequest(String player) {
         this.addPathParameter("player", player);
-        this.addPathParameter("games", "to-move");
+        this.addPathParameter("tournaments", "");
         this.setTypeRequest(TypeRequest.GET);
     }
 
@@ -31,11 +32,12 @@ public class DailyChessToMoveRequest extends AbstractRequest {
 
     @Override
     public Response getResponse(String response, int httpCode, Map<String, String> headers, String errorMessage) {
-        return DailyChessToMoveResponse.newBuilder()
+        return TournamentsPlayerResponse.newBuilder()
                 .setBody(response)
                 .setHTTPCode(httpCode)
                 .setHeaders(headers)
                 .setErrorMessage(errorMessage)
+                .setTypeRequest(this.getTypeRequest().isPresent() ? this.getTypeRequest().get() : null)
                 .build();
     }
 }

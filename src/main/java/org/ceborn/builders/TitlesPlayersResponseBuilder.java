@@ -1,6 +1,6 @@
 package org.ceborn.builders;
 
-import org.ceborn.http.impl.TitlesPlayersResponse;
+import org.ceborn.http.impl.responses.TitlesPlayersResponse;
 
 public class TitlesPlayersResponseBuilder extends AbstractBuilder<TitlesPlayersResponse> {
 

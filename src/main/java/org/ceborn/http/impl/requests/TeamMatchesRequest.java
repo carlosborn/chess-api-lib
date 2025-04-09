@@ -1,17 +1,17 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.requests;
 
-import org.ceborn.helpers.HelperDate;
 import org.ceborn.http.Response;
 import org.ceborn.http.TypeRequest;
+import org.ceborn.http.impl.responses.TeamMatchesResponse;
 
 import java.util.Map;
 import java.util.Optional;
 
-public class MonthlyArchivesGamesRequest extends AbstractRequest {
+public class TeamMatchesRequest extends AbstractRequest {
 
-    public MonthlyArchivesGamesRequest(String player) {
+    public TeamMatchesRequest(String player) {
         this.addPathParameter("player", player);
-        this.addPathParameter("games", "archives");
+        this.addPathParameter("matches", "");
         this.setTypeRequest(TypeRequest.GET);
     }
 
@@ -32,12 +32,11 @@ public class MonthlyArchivesGamesRequest extends AbstractRequest {
 
     @Override
     public Response getResponse(String response, int httpCode, Map<String, String> headers, String errorMessage) {
-        return MonthlyArchivesGamesResponse.newBuilder()
+        return TeamMatchesResponse.newBuilder()
                 .setBody(response)
                 .setHTTPCode(httpCode)
                 .setHeaders(headers)
                 .setErrorMessage(errorMessage)
-                .setTypeRequest(this.getTypeRequest().isPresent() ? this.getTypeRequest().get() : null)
                 .build();
     }
 }

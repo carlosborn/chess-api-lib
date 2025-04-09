@@ -1,16 +1,17 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.requests;
 
 import org.ceborn.http.Response;
 import org.ceborn.http.TypeRequest;
+import org.ceborn.http.impl.TitlesAbbreviations;
+import org.ceborn.http.impl.responses.TitlesPlayersResponse;
 
 import java.util.Map;
 import java.util.Optional;
 
-public class TournamentsPlayerRequest extends AbstractRequest {
+public class TitlesPlayersRequest extends AbstractRequest {
 
-    public TournamentsPlayerRequest(String player) {
-        this.addPathParameter("player", player);
-        this.addPathParameter("tournaments", "");
+    public TitlesPlayersRequest(TitlesAbbreviations title) {
+        this.addPathParameter("titled", title.name());
         this.setTypeRequest(TypeRequest.GET);
     }
 
@@ -31,7 +32,7 @@ public class TournamentsPlayerRequest extends AbstractRequest {
 
     @Override
     public Response getResponse(String response, int httpCode, Map<String, String> headers, String errorMessage) {
-        return TournamentsPlayerResponse.newBuilder()
+        return TitlesPlayersResponse.newBuilder()
                 .setBody(response)
                 .setHTTPCode(httpCode)
                 .setHeaders(headers)
@@ -39,4 +40,5 @@ public class TournamentsPlayerRequest extends AbstractRequest {
                 .setTypeRequest(this.getTypeRequest().isPresent() ? this.getTypeRequest().get() : null)
                 .build();
     }
+
 }

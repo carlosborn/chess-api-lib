@@ -1,16 +1,16 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.requests;
 
 import org.ceborn.http.Response;
 import org.ceborn.http.TypeRequest;
+import org.ceborn.http.impl.responses.DataPlayerResponse;
 
 import java.util.Map;
 import java.util.Optional;
 
-public class DataStatsPlayerRequest extends AbstractRequest {
+public class DataPlayerRequest extends AbstractRequest {
 
-    public DataStatsPlayerRequest(String player) {
+    public DataPlayerRequest(String player) {
         this.addPathParameter("player", player);
-        this.addPathParameter("stats", "");
         this.setTypeRequest(TypeRequest.GET);
     }
 
@@ -31,11 +31,12 @@ public class DataStatsPlayerRequest extends AbstractRequest {
 
     @Override
     public Response getResponse(String response, int httpCode, Map<String, String> headers, String errorMessage) {
-        return DataStatsPlayerResponse.newBuilder()
+        return DataPlayerResponse.newBuilder()
                 .setBody(response)
                 .setHTTPCode(httpCode)
                 .setHeaders(headers)
                 .setErrorMessage(errorMessage)
+                .setTypeRequest(this.getTypeRequest().isPresent() ? this.getTypeRequest().get() : null)
                 .build();
     }
 }

@@ -1,4 +1,4 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.requests;
 
 import org.ceborn.http.Request;
 import org.ceborn.http.TypeRequest;

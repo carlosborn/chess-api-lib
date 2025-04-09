@@ -1,8 +1,6 @@
 package org.ceborn.builders;
 
-import org.ceborn.http.Response;
-import org.ceborn.http.impl.DailyChessToMoveResponse;
-import org.ceborn.http.impl.DataPlayerResponse;
+import org.ceborn.http.impl.responses.DailyChessToMoveResponse;
 
 public class DailyChessToMoveResponseBuilder extends AbstractBuilder<DailyChessToMoveResponse> {
 

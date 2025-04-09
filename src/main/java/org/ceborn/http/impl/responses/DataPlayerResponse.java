@@ -1,7 +1,8 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.responses;
 
 import lombok.Getter;
 import org.ceborn.builders.DataPlayerResponseBuilder;
+import org.ceborn.http.impl.PlayerStatus;
 
 import java.util.Date;
 import java.util.Optional;

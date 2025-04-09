@@ -1,16 +1,17 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.requests;
 
 import org.ceborn.http.Response;
 import org.ceborn.http.TypeRequest;
+import org.ceborn.http.impl.responses.DataStatsPlayerResponse;
 
 import java.util.Map;
 import java.util.Optional;
 
-public class PlayerIsOnlineRequest extends AbstractRequest {
+public class DataStatsPlayerRequest extends AbstractRequest {
 
-    public PlayerIsOnlineRequest(String player) {
+    public DataStatsPlayerRequest(String player) {
         this.addPathParameter("player", player);
-        this.addPathParameter("is-online", "");
+        this.addPathParameter("stats", "");
         this.setTypeRequest(TypeRequest.GET);
     }
 
@@ -31,7 +32,7 @@ public class PlayerIsOnlineRequest extends AbstractRequest {
 
     @Override
     public Response getResponse(String response, int httpCode, Map<String, String> headers, String errorMessage) {
-        return PlayerIsOnlineResponse.newBuilder()
+        return DataStatsPlayerResponse.newBuilder()
                 .setBody(response)
                 .setHTTPCode(httpCode)
                 .setHeaders(headers)

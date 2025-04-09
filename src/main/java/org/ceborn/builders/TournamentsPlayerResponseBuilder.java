@@ -1,6 +1,6 @@
 package org.ceborn.builders;
 
-import org.ceborn.http.impl.TournamentsPlayerResponse;
+import org.ceborn.http.impl.responses.TournamentsPlayerResponse;
 
 public class TournamentsPlayerResponseBuilder extends AbstractBuilder<TournamentsPlayerResponse> {
 

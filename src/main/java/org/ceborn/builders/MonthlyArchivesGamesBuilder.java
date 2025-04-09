@@ -1,6 +1,6 @@
 package org.ceborn.builders;
 
-import org.ceborn.http.impl.MonthlyArchivesGamesResponse;
+import org.ceborn.http.impl.responses.MonthlyArchivesGamesResponse;
 
 public class MonthlyArchivesGamesBuilder extends AbstractBuilder<MonthlyArchivesGamesResponse> {
 

@@ -1,8 +1,9 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.requests;
 
 import org.ceborn.helpers.HelperDate;
 import org.ceborn.http.Response;
 import org.ceborn.http.TypeRequest;
+import org.ceborn.http.impl.responses.GamesFinishedResponse;
 
 import java.util.Map;
 import java.util.Optional;

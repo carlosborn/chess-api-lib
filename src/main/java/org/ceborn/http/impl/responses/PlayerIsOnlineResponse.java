@@ -1,10 +1,7 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.responses;
 
 import lombok.Getter;
 import org.ceborn.builders.PlayerIsOnlineResponseBuilder;
-import org.ceborn.http.TypeRequest;
-
-import java.util.Map;
 
 @Getter
 public class PlayerIsOnlineResponse extends AbstractResponse<PlayerIsOnlineResponse> {

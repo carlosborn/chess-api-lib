@@ -1,6 +1,6 @@
 package org.ceborn.builders;
 
-import org.ceborn.http.impl.DataPlayerResponse;
+import org.ceborn.http.impl.responses.DataPlayerResponse;
 
 public class DataPlayerResponseBuilder extends AbstractBuilder<DataPlayerResponse> {
 

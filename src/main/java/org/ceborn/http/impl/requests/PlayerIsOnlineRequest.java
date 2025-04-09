@@ -1,15 +1,17 @@
-package org.ceborn.http.impl;
+package org.ceborn.http.impl.requests;
 
 import org.ceborn.http.Response;
 import org.ceborn.http.TypeRequest;
+import org.ceborn.http.impl.responses.PlayerIsOnlineResponse;
 
 import java.util.Map;
 import java.util.Optional;
 
-public class TitlesPlayersRequest extends AbstractRequest {
+public class PlayerIsOnlineRequest extends AbstractRequest {
 
-    public TitlesPlayersRequest(TitlesAbbreviations title) {
-        this.addPathParameter("titled", title.name());
+    public PlayerIsOnlineRequest(String player) {
+        this.addPathParameter("player", player);
+        this.addPathParameter("is-online", "");
         this.setTypeRequest(TypeRequest.GET);
     }
 
@@ -30,13 +32,11 @@ public class TitlesPlayersRequest extends AbstractRequest {
 
     @Override
     public Response getResponse(String response, int httpCode, Map<String, String> headers, String errorMessage) {
-        return TitlesPlayersResponse.newBuilder()
+        return PlayerIsOnlineResponse.newBuilder()
                 .setBody(response)
                 .setHTTPCode(httpCode)
                 .setHeaders(headers)
                 .setErrorMessage(errorMessage)
-                .setTypeRequest(this.getTypeRequest().isPresent() ? this.getTypeRequest().get() : null)
                 .build();
     }
-
 }

@@ -1,6 +1,6 @@
 package org.ceborn.builders;
 
-import org.ceborn.http.impl.PlayerIsOnlineResponse;
+import org.ceborn.http.impl.responses.PlayerIsOnlineResponse;
 
 public class PlayerIsOnlineResponseBuilder extends AbstractBuilder<PlayerIsOnlineResponse> {
 

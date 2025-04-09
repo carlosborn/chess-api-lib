@@ -1,6 +1,6 @@
 package org.ceborn.builders;
 
-import org.ceborn.http.impl.GamesFinishedResponse;
+import org.ceborn.http.impl.responses.GamesFinishedResponse;
 
 public class GamesFinishedResponseBuilder extends AbstractBuilder<GamesFinishedResponse> {
 
