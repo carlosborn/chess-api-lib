@@ -27,10 +27,10 @@ public class GamesFinishedData {
     private final String rules;
 
     @Getter
-    private final PlayerGamesFinishedData black;
+    private final PlayerGameFinishedData black;
 
     @Getter
-    private final PlayerGamesFinishedData white;
+    private final PlayerGameFinishedData white;
 
 
     // Optionals
@@ -52,8 +52,8 @@ public class GamesFinishedData {
         this.eco = json.has("eco") ? json.getString("eco") : null;
         this.tournament = json.has("tournament") ? json.getString("tournament") : null;
         this.match = json.has("match") ? json.getString("match") : null;
-        this.white = new PlayerGamesFinishedData(json.getJSONObject("white"));
-        this.black = new PlayerGamesFinishedData(json.getJSONObject("black"));
+        this.white = new PlayerGameFinishedData(json.getJSONObject("white"));
+        this.black = new PlayerGameFinishedData(json.getJSONObject("black"));
         this.timeClass = json.has("time_class") ? json.getString("time_class") : null;
         this.tcn = json.has("tcn") ? json.getString("tcn") : null;
     }

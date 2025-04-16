@@ -4,7 +4,7 @@ import lombok.Getter;
 import org.json.JSONObject;
 
 @Getter
-public class PlayerGamesFinishedData {
+public class PlayerGameFinishedData {
 
     private final String username;
     private final int rating;
@@ -12,7 +12,7 @@ public class PlayerGamesFinishedData {
     private final String id;
     private final String uuid;
 
-    public PlayerGamesFinishedData(JSONObject json) {
+    public PlayerGameFinishedData(JSONObject json) {
         this.username = json.getString("username");
         this.rating = json.getInt("rating");
         this.result = json.getString("result");

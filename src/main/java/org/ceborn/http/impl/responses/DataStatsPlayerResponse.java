@@ -12,7 +12,7 @@ public class DataStatsPlayerResponse extends AbstractResponse<DataStatsPlayerRes
     private Chess960Daily chess960Daily;
     private ChessBlitz chessBlitz;
     private TacticsPlayerStats tactics;
-    private LessonsPlayerStats lessons;
+    private LessonPlayerStats lessons;
     private PuzzleRushPlayerStats puzzleRush;
 
     private DataStatsPlayerResponse() {
@@ -42,7 +42,7 @@ public class DataStatsPlayerResponse extends AbstractResponse<DataStatsPlayerRes
         return this.tactics == null ? Optional.empty() : Optional.of(this.tactics);
     }
 
-    public Optional<LessonsPlayerStats> getLessons() {
+    public Optional<LessonPlayerStats> getLessons() {
         return this.lessons == null ? Optional.empty() : Optional.of(this.lessons);
     }
 
@@ -76,7 +76,7 @@ public class DataStatsPlayerResponse extends AbstractResponse<DataStatsPlayerRes
         }
 
         if (this.getBody().has("lessons")) {
-            this.lessons = new LessonsPlayerStats(this.getBody().getJSONObject("lessons"));
+            this.lessons = new LessonPlayerStats(this.getBody().getJSONObject("lessons"));
         }
 
         if (this.getBody().has("puzzle_rush")) {
